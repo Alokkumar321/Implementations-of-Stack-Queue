@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+#define MAX 10
+class Stack{
+    int * array;
+    int Top;
+    public:
+    Stack()
+    {
+        array = new int[MAX];
+        Top = -1;
+    }
+    
+    void Push(int x)
+    {
+        if(Top == MAX -1)
+        {
+            cout<<"Stack Overflow"<<endl;
+            return;
+        }
+        Top ++;
+        array[Top] = x;
+    }
+    void pop()
+    {
+        if(Top == -1)
+        {
+            cout<<"Stack Underflow"<<endl;
+            return;
+        }
+        Top --;
+    }
+    int Peek()
+    {
+        if(Top == -1)
+        {
+            cout<<"No Element is Found inside Stack"<<endl;
+            return -1;
+        }
+        return array[Top];
+    }
+    bool Empty()
+    {
+        if(Top == -1)
+        {
+            return true;
+        }
+        return false;
+    }
+};
+
+int main()
+{
+    Stack s;
+    s.Push(1);
+    s.Push(2);
+    s.Push(3);
+    s.Push(4);
+    s.Push(5);
+    s.Push(6);
+    s.Push(7);
+    s.Push(8);
+    s.Push(9);
+    s.Push(10);
+    //cout<<s.Peek();
+    s.pop();
+    s.pop();
+    s.pop();
+    s.pop();
+    s.pop();
+    s.pop();
+    s.pop();
+    s.pop();
+    s.pop();
+    s.pop();
+    cout<<s.Peek();
+}
