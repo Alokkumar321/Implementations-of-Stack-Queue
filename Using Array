@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+#define MAX 10
+class Queue
+{
+    int * array;
+    int Front;
+    int Back;
+    public:
+    Queue()
+    {
+        array = new int[MAX];
+        Front = -1;
+        Back = -1;
+    }
+    void push(int x)
+    {
+        if(Back == MAX-1)
+        {
+            cout<<"Queue Overflow"<<endl;
+            return;
+        }
+        Back ++;
+        array[Back] = x;
+        if(Front == -1)
+        {
+            Front ++;
+        }
+    }
+    void Pop()
+    {
+        if(Front == -1 || Front > Back)
+        {
+            cout<<"No Element in Queue"<<endl;
+            return;
+        }
+        Front ++;
+    }
+    int Peek()
+    {
+        if(Front == -1 || Front > Back)
+        {
+            cout<<"No Element in Queue"<<endl;
+            return -1;
+        }
+        return array[Front];
+    }
+    bool Empty()
+    {
+        if(Front == -1 || Front > Back)
+        {
+            cout<<"No Element in Queue"<<endl;
+            return true;
+        }
+        return false;
+    }
+};
+int main()
+{
+    Queue Q;
+    Q.push(1);
+    Q.push(2);
+    Q.push(3);
+    Q.push(4);
+    Q.push(5);
+    Q.push(6);
+    Q.push(7);
+    Q.push(8);
+    Q.push(9);
+    Q.push(10);
+    cout<<Q.Peek()<<endl;
+    Q.Pop();
+    Q.Pop();
+    cout<<Q.Peek();
+}
