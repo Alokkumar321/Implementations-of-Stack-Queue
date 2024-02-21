@@ -1,0 +1,41 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+
+void insertAtbottom(stack<int>&stk, int new_element){
+    stack<int>temp;
+    
+    while(!stk.empty()){
+        temp.push(stk.top());
+        stk.pop();
+    }
+    stk.push(new_element);
+    while(!temp.empty()){
+        stk.push(temp.top());
+        temp.pop();
+    }
+}
+
+int main(){
+    stack<int> stk;
+    for(int i=1; i<5; i++){
+        stk.push(i);
+    }
+    
+    stack<int> copyStack = stk;
+    cout<<"Original Stack: "<<endl;
+    while(!copyStack.empty()){
+        cout<<copyStack.top()<<" "<<endl;
+        copyStack.pop();
+    }
+    
+    insertAtbottom(stk, 6);
+    
+    cout<<endl<<"Element inserted at bottom: "<<6<<endl;
+    cout<<"Inserted Stack: "<<endl;
+    while(!stk.empty()){
+        cout<<stk.top()<< " "<<endl;
+        stk.pop();
+    }
+    return 0;
+}
