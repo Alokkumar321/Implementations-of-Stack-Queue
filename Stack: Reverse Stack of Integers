@@ -1,0 +1,43 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+
+void reverseStack(stack<int> &stk){
+    stack<int> temp, temp2, temp3;
+    
+    while(!stk.empty()){
+        temp.push(stk.top());
+        stk.pop();
+        
+    }
+    while(!temp.empty()){
+        temp2.push(temp.top());
+        temp.pop();
+    }
+    while(!temp2.empty()){
+        stk.push(temp2.top());
+        temp2.pop();
+    }
+}
+
+int main(){
+    stack<int> stk;
+    for(int i=1; i<=5; i++){
+        stk.push(i);
+    }
+    stack<int> originalStack = stk;
+    
+    cout<<"Original Stack: "<<endl;
+    while(!originalStack.empty()){
+        cout<<originalStack.top()<<endl;
+        originalStack.pop();
+    }
+    
+    reverseStack(stk);
+    
+    cout<<"Reversed Stack: "<<endl;
+    while(!stk.empty()){
+        cout<<stk.top()<<" "<<endl;
+        stk.pop();
+    }
+}
