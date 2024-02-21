@@ -1,0 +1,54 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+
+void
+delMidElement (stack < int >&stk)
+{
+  stack < int >temp;
+  int low = 0;
+  int high = stk.size ();
+  int mid = (low + high) / 2;
+
+  
+
+  for (int i = 0; i < mid; i++)
+	{
+	  temp.push (stk.top ());
+	  stk.pop ();
+	}
+    cout << "mid:" << stk.top() << endl;
+  stk.pop ();
+  while (!temp.empty ())
+	{
+	  stk.push (temp.top ());
+	  temp.pop ();
+	}
+}
+
+int
+main ()
+{
+  stack < int >stk;
+  for (int i = 1; i <= 5; i++)
+	{
+	  stk.push (i);
+	}
+  stack < int >originalStack = stk;
+
+  cout << "Original Stack: " << endl;
+  while (!originalStack.empty ())
+	{
+	  cout << originalStack.top () << endl;
+	  originalStack.pop ();
+	}
+
+  delMidElement (stk);
+
+  cout << "After deleting Mid Element:" << endl;
+  while (!stk.empty ())
+	{
+	  cout << stk.top () << " " << endl;
+	  stk.pop ();
+	}
+}
